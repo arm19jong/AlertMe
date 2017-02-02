@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">AlertMe</string>
+    <string name="api_key">AIzaSyBYzDxijgOQsFeqzBoEtwX3MLt6rjHFT7A</string>
+    <string name="selected_place">Last Selected Place:</string>
+    <string name="place_details">
+    <![CDATA[
+        <b>%1$s</b>
+        <br/>
+        <i>Place Id: %2$s</i>
+        <br/>
+        Address: %3$s
+        <br/>
+        Phone: %4$s
+        <br/>
+        Website: %5$s
+    ]]>
+    </string>
+    <string name="intro_message">
+        <![CDATA[
+
+
+            This sample uses the PlaceAutocompleteFragment from the Places API for Android within a
+            CardView to provide an autocomplete powered search experience. Once a place is selected,
+            its details are displayed.
+
+
+        ]]>
+    </string>
+    <string name="banner_ad_unit_id">ca-app-pub-7061678296174983/2172452958</string>
+</resources>

@@ -1,6 +1,10 @@
 package com.jongzazaal.alertme;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by jongzazaal on 4/1/2560.
@@ -40,6 +44,15 @@ public class SwitchService {
             }
         }
         return on;
+    }
+    public boolean isOffAllService(){
+        boolean isOff = true;
+        Log.d(TAG, "isOffAllService: "+this.serviceName.size());
+        if(this.serviceName.size() > 0){
+
+            isOff = false;
+        }
+        return isOff;
     }
 
 }

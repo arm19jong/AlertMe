@@ -1,18 +1,14 @@
 package com.jongzazaal.alertme;
 
-import android.app.AlarmManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-
 import android.location.Location;
 import android.os.Bundle;
 import android.os.IBinder;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -120,11 +116,19 @@ public class ServiceLoc extends Service implements OnMapReadyCallback,
                         Log.i(TAG, "Service running" + "//" + latitude + "//" + longitude + "//" + be);
 //                        Log.i(TAG, "Service running"+i);
                         if (be <= distance) {
+
                             Intent intent1 = new Intent(context, AlarmMeActivity.class);
                             intent1.putExtra("placeName", intent.getStringExtra("placeName"));
                             intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            SwitchService.getInstace().removeServiceName(intent.getStringExtra("placeName"));
+                            if(SwitchService.getInstace().isOffAllService()){
+                                if (googleApiClient != null && googleApiClient.isConnected()) {
+                                    googleApiClient.disconnect();
+                                }
+                            }
                             startActivity(intent1);
 //                            stopSelf();
+
                             break;
                         }
 
@@ -202,4 +206,11 @@ public class ServiceLoc extends Service implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
 
     }
+
+    public void stopMap(){
+
+            onDestroy();
+
+    }
+
 }

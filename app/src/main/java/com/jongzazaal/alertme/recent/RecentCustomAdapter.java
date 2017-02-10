@@ -9,11 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -24,8 +22,6 @@ import com.jongzazaal.alertme.SwitchService;
 import com.jongzazaal.alertme.databaseAlarm.ControlDatabase;
 import com.jongzazaal.alertme.databaseAlarm.RecentClass;
 import com.jongzazaal.alertme.databaseAlarm.SingleDBalarmMe;
-
-import java.util.List;
 
 /**
  * Created by jongzazaal on 17/12/2559.
@@ -162,6 +158,8 @@ public class RecentCustomAdapter extends RecyclerSwipeAdapter<RecentCustomAdapte
                 // do something, the isChecked will be
                 // true if the switch is in the On position
 
+
+
                 if(isChecked){
 //                    Toast.makeText(context, "On", Toast.LENGTH_SHORT).show();
                     SwitchService.getInstace().addServiceName(mDataSet.getPlaceName().get(position));
@@ -179,6 +177,11 @@ public class RecentCustomAdapter extends RecyclerSwipeAdapter<RecentCustomAdapte
 //                    Intent intent = new Intent(context, ServiceLoc.class);
 //                    context.stopService(intent);
 //                    new ServiceLoc().stopThreadAlert(mDataSet.getPlaceName().get(position));
+                }
+                if(SwitchService.getInstace().isOffAllService()){
+                    ServiceLoc.context = context;
+                    Intent intent = new Intent(context, ServiceLoc.class);
+                    context.stopService(intent);
                 }
             }
         });

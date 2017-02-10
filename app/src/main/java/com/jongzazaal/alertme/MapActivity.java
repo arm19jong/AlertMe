@@ -1,5 +1,30 @@
 package com.jongzazaal.alertme;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.location.Location;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.text.Html;
+import android.text.InputType;
+import android.text.Spanned;
+import android.util.Log;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.Switch;
+import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
@@ -22,36 +47,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.jongzazaal.alertme.databaseAlarm.ControlDatabase;
 import com.jongzazaal.alertme.databaseAlarm.RecentClass;
 import com.jongzazaal.alertme.databaseAlarm.SingleDBalarmMe;
-
-import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.location.Location;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Vibrator;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
-import android.text.InputType;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -155,7 +150,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
             }
         });
         seekbar = (SeekBar) findViewById(R.id.seekbarM);
-        seekbar.setMax(800);
+        seekbar.setMax(2000);
         seekbar.setProgress(200);
         distance = 200;
 //        seekbar.setVisibility(View.GONE);

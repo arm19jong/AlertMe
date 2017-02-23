@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
 import android.util.Log;
@@ -90,6 +91,8 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
     private LatLng latLngP;
 
     private RelativeLayout saveMap;
+
+    private int length = 16;
 
 
     @Override
@@ -181,6 +184,10 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                     final EditText input = new EditText(MapActivity.this);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                     input.setInputType(InputType.TYPE_CLASS_TEXT );
+                    InputFilter[] FilterArray = new InputFilter[1];
+                    FilterArray[0] = new InputFilter.LengthFilter(length);
+                    input.setFilters(FilterArray);
+
                     builder.setView(input);
 
 // Set up the buttons
@@ -228,6 +235,9 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
                     input.setInputType(InputType.TYPE_CLASS_TEXT );
                     input.setText(SingleDBalarmMe.getInstance().getPlaceName());
+                    InputFilter[] FilterArray = new InputFilter[1];
+                    FilterArray[0] = new InputFilter.LengthFilter(length);
+                    input.setFilters(FilterArray);
                     builder.setView(input);
 
 // Set up the buttons

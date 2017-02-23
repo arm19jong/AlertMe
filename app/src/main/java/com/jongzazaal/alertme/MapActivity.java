@@ -137,13 +137,13 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                 // true if the switch is in the On position
 
                 if(isChecked){
-                    Toast.makeText(MapActivity.this, "On", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MapActivity.this, R.string.switchOn, Toast.LENGTH_SHORT).show();
                     ServiceLoc.context = MapActivity.this;
                     Intent intent = new Intent(MapActivity.this, ServiceLoc.class);
                     startService(intent);
                 }
                 else {
-                    Toast.makeText(MapActivity.this, "Off", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MapActivity.this, R.string.switchOff, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MapActivity.this, ServiceLoc.class);
                     stopService(intent);
                 }
@@ -153,7 +153,6 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
         seekbar.setMax(2000);
         seekbar.setProgress(200);
         distance = 200;
-//        seekbar.setVisibility(View.GONE);
 
 
 
@@ -164,14 +163,14 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
             public void onClick(View view) {
 
                 if(mMarker==null){
-                    Toast.makeText(MapActivity.this, "plz Select place", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MapActivity.this, R.string.plz_Select_place, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 //role 0->new date
                 //role 1->recent date
                 if (role == 0){
                     final AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity.this);
-                    builder.setTitle("Plz Enter Name Of Place");
+                    builder.setTitle(R.string.Plz_Enter_Name_Of_Place);
                     builder.setCancelable(true);
 //                    builder.setPositiveButton(android.R.string.ok, null); //Set to null. We override the onclick
 //                    builder.setNegativeButton(android.R.string.cancel, null);
@@ -185,14 +184,14 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                     builder.setView(input);
 
 // Set up the buttons
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 //                            m_Text = input.getText().toString();
                             boolean nameUnique = true;
                             for (String nP: RecentClass.getInstance().getPlaceName()) {
                                 if (nP.equals(input.getText().toString())){
-                                    Toast.makeText(MapActivity.this, "The name must be unique", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MapActivity.this, R.string.The_name_must_be_unique, Toast.LENGTH_SHORT).show();
 //                                    return;
                                     nameUnique=false;
                                     dialog.dismiss();
@@ -200,7 +199,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                             }
                             if(nameUnique){
                                 ControlDatabase.getInstance(MapActivity.this).saveRecord(input.getText().toString(), mMarker.getPosition(),seekbar.getProgress());
-                                Toast.makeText(MapActivity.this, "Save Done", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MapActivity.this, R.string.Save_Done, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent();
                                 setResult(RESULT_OK, intent);
                                 finish();
@@ -208,7 +207,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
 
                         }
                     });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.cancle, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
@@ -221,8 +220,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                 }
                 else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity.this);
-                    builder.setTitle("Save?");
-//                    builder.setMessage("Save?");
+                    builder.setTitle(R.string.saveData);
                     builder.setCancelable(true);
 
 // Set up the input
@@ -233,7 +231,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                     builder.setView(input);
 
 // Set up the buttons
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 //                            m_Text = input.getText().toString();
@@ -242,7 +240,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                             listPN.remove(SingleDBalarmMe.getInstance().getPlaceName());
                             for (String nP: listPN) {
                                 if (nP.equals(input.getText().toString())){
-                                    Toast.makeText(MapActivity.this, "The name must be unique", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MapActivity.this, R.string.The_name_must_be_unique, Toast.LENGTH_SHORT).show();
 //                                    return;
                                     nameUnique=false;
                                     dialog.dismiss();
@@ -251,14 +249,14 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                             if (nameUnique){
                             ControlDatabase.getInstance(MapActivity.this).updateRecord(SingleDBalarmMe.getInstance().getId(),
                                     input.getText().toString(), mMarker.getPosition(), seekbar.getProgress());
-                            Toast.makeText(MapActivity.this, "Save Done", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MapActivity.this, R.string.Save_Done, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent();
                             setResult(RESULT_OK, intent);
                             finish();}
 
                         }
                     });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.cancle, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
@@ -284,19 +282,19 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
     @Override
     public void onBackPressed(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity.this);
-        builder.setTitle("Exit");
-        builder.setMessage("You not been saved. Discard?");
+        builder.setTitle(R.string.exit);
+        builder.setMessage(R.string.You_not_been_saved_Discard);
         builder.setCancelable(true);
 
 // Set up the buttons
-        builder.setPositiveButton("Discard", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.discard, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                             finish();
 
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancle, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -329,19 +327,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
 
     @Override
     public void onPlaceSelected(Place place) {
-        Log.i("aaaaaaaaaaaaaaaaaaaaaa", "Place Selected: " + place.getName());
 
-
-        // Format the returned place's details and display them in the TextView.
-//        mPlaceDetailsText.setText(formatPlaceDetails(getResources(), place.getName(), place.getId(),
-//                place.getAddress(), place.getPhoneNumber(), place.getWebsiteUri()));
-
-//        CharSequence attributions = place.getAttributions();
-//        if (!TextUtils.isEmpty(attributions)) {
-//            mPlaceAttribution.setText(Html.fromHtml(attributions.toString()));
-//        } else {
-//            mPlaceAttribution.setText("");
-//        }
         p = place;
         mMap.clear();
         mMarker = mMap.addMarker(new MarkerOptions()
@@ -354,7 +340,6 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                 .fillColor(getResources().getColor(R.color.colorAria))
         );
 
-//        seekbar.setVisibility(View.VISIBLE);
 
         consoleMap.setVisibility(View.VISIBLE);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p.getLatLng(), 16));
@@ -386,14 +371,17 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
     @Override
     public void onMapClick(LatLng latLng) {
 
-//        mMap.setText((float)latLng.latitude+", "+(float)latLng.longitude);
+
         mMap.clear();
-//        this.googleMap.addMarker(new MarkerOptions()
-//                .position(latLng)
-//                .title("This Location")
-//        );
+
         mMarker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
+        );
+        circle = mMap.addCircle(new CircleOptions()
+                .center(latLng)
+                .radius(seekbar.getProgress())
+                .strokeColor(Color.RED)
+                .fillColor(getResources().getColor(R.color.colorAria))
         );
 
         consoleMap.setVisibility(View.VISIBLE);
@@ -417,7 +405,7 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
         if(i.getIntExtra("role", 0) == 1){
             role = 1;
             SingleDBalarmMe s = SingleDBalarmMe.getInstance();
-//            seekbar.setProgress(s.getDistance());
+
             latLngP = new LatLng(s.getLat(), s.getLng());
             seekbar.setProgress(s.getDistance());
             mMap.clear();
@@ -431,7 +419,6 @@ public class MapActivity extends Activity implements PlaceSelectionListener, OnM
                     .fillColor(getResources().getColor(R.color.colorAria))
             );
 
-//        seekbar.setVisibility(View.VISIBLE);
 
             consoleMap.setVisibility(View.VISIBLE);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngP, 16));

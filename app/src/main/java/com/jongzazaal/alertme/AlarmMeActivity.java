@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -39,7 +38,8 @@ public class AlarmMeActivity extends Activity {
         i = getIntent();
 
         placeName = (TextView) findViewById(R.id.placeName);
-        placeName.setText("You are near "+i.getStringExtra("placeName"));
+        String near = getString(R.string.You_are_near);
+        placeName.setText(near + i.getStringExtra("placeName"));
 
         v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 

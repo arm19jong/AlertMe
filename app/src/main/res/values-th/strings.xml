@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AlertMe</string>
+    <string name="api_key">AIzaSyBYzDxijgOQsFeqzBoEtwX3MLt6rjHFT7A</string>
+    <string name="selected_place">Last Selected Place:</string>
+    <string name="place_details">
+    <![CDATA[
+        <b>%1$s</b>
+        <br/>
+        <i>Place Id: %2$s</i>
+        <br/>
+        Address: %3$s
+        <br/>
+        Phone: %4$s
+        <br/>
+        Website: %5$s
+    ]]>
+    </string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-7061678296174983/2172452958</string>
+
+    <string name="You_are_near">"คุณอยู่ใกล้กับ "</string>
+    <string name="switchOn">เปิด</string>
+    <string name="switchOff">ปิด</string>
+    <string name="plz_Select_place">กรุณาเลือกสถานที่</string>
+    <string name="Plz_Enter_Name_Of_Place">กรุณาใส่ชื่อสถานที่</string>
+    <string name="Save_Done">บันทึกเรียบร้อย</string>
+    <string name="The_name_must_be_unique">ชื่อต้องไม่ซ้ำกับอันอื่น</string>
+    <string name="ok">ตกลง</string>
+    <string name="cancle">ยกเลิก</string>
+    <string name="saveData">บันทึก?</string>
+    <string name="discard">ละทิ้ง</string>
+    <string name="exit">ออก</string>
+    <string name="You_not_been_saved_Discard">คุณยังไม่ได้บันทึก ต้องการจะละทิ้ง?</string>
+
+</resources>
